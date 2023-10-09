@@ -79,7 +79,7 @@ function reset() {
 	$(".evidenceToggle input").each(function() {
 		$(this).removeClass('yes no');
 	});
-	warning("Please select up to 3 pieces of evidence to narrow down the spookster.", "#2f2f2f", "#fff");
+	warning("Veuillez sélectionner jusqu'à 3 éléments de preuve pour trouver le type d'entité.", "#2f2f2f", "#fff");
 }
 
 function updateGhosts() {
@@ -139,14 +139,14 @@ function updateGhosts() {
 		if(minEvidenceLeft === maxEvidenceLeft)
 		{
 			if(maxEvidenceLeft === 1)
-				warning("Please select another evidence to identify the spookster.", "#2f2f2f", "#fff");
+				warning("Veuillez sélectionner une autre preuve pour identifier l'entité.", "#2f2f2f", "#fff");
 			else
-				warning("Please select up to " + maxEvidenceLeft + " pieces of evidence to narrow down the spookster. Click it again to eliminate it as a possibility.", "#2f2f2f", "#fff");
+				warning("Veuillez sélectionner jusqu'à " + maxEvidenceLeft + " preuves pour réduire les possibilités concernant l'entité.", "#2f2f2f", "#fff");
 		}
 		else
 		{
 			// Technically the if/else statements don't need to be as complex...
-			warning("Please select up to " + maxEvidenceLeft + " pieces of evidence to narrow down the spookster. Click it again to eliminate it as a possibility.", "#2f2f2f", "#fff");
+			warning("Veuillez sélectionner jusqu'à " + maxEvidenceLeft + " preuves pour réduire les possibilités concernant l'entité.", "#2f2f2f", "#fff");
 		}
 	}
 	else if($(".ghost:not(.excluded):not(.disabled)").length === 1)
@@ -155,18 +155,18 @@ function updateGhosts() {
 		if($(".ghost.excluded").length > 0)
 		{
 			Ghost.addClass("maybe");
-			warning("A ghost! But how can you be so sure?", "#1faef4", "#000");
+			warning("Cool ! Mais en êtes-vous sûr ?", "#1faef4", "#000");
 		}
 		else
 		{
 			Ghost.addClass("yes");
-			warning("Oh shit, a ghooost! Click the reset button above to start over.", "#55be61", "#000");
+			warning("Super ! Cliquez sur le bouton de réinitialisation ci-dessus pour recommencer.", "#55be61", "#000");
 		}
 	}
 	else if($(".ghost.excluded").length > 0)
-		warning("You excluded a vital piece of evidence!", "#c61c1ce0", "#fff");
+		warning("Vous avez exclu une preuve essentielle !", "#c61c1ce0", "#fff");
 	else
-		warning("No combination of evidence works!", "#c61c1ce0", "#fff");
+		warning("Aucune combinaison de preuves ne fonctionne !", "#c61c1ce0", "#fff");
 }
 
 $("#toggle_instructions").click(function(){
@@ -264,29 +264,19 @@ $("#possessions_list input").change(function() {
 	}
 
 	switch (possessionsType) {
-		case 'mirror': textToRevealID = "mirror_hint";
-            break;
-        case 'music': textToRevealID = "music_hint";
-            break;
         case 'ouija': textToRevealID = "ouija_hint";
-            break;
-        case 'circle': textToRevealID = "circle_hint";
             break;
         case 'tarot': textToRevealID = "tarot_hint";
             break;
         case 'doll': textToRevealID = "doll_hint";
             break;
-		case 'paw': textToRevealID = "paw_hint";
-			break;
 	}
 
 	$("#possessions_hints").children().addClass("hidden");
 	$("#possessions_hints").children(`#${textToRevealID}`).removeClass("hidden");
 });
 
-$("#nightmare_difficulty").change(function() {
-	updateGhosts();
-});
+updateGhosts();
 
 
 //Evidence has changed, update all affected ghosts

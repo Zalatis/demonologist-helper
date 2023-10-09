@@ -22,7 +22,7 @@ body {
 .orb {
 	background-repeat: no-repeat;
 	background-position: top left;
-	background-image: url('orb.gif');
+	/* background-image: url('orb.gif'); */
 }
 
 .warning {
